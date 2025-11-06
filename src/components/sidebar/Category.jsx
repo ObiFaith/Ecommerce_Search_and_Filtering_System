@@ -1,6 +1,9 @@
 import RadioBox from "../RadioBox";
+import { useProduct } from "../../context/product";
 
-const Category = ({ products, handleCategory }) => {
+const Category = ({ handleCategory }) => {
+  const { products } = useProduct();
+
   const categories = [
     ...new Set(
       products.map(
@@ -9,6 +12,7 @@ const Category = ({ products, handleCategory }) => {
       )
     ),
   ];
+
   return (
     <div>
       <h2 className="text-base xl:text-lg font-medium mb-3">Categories</h2>

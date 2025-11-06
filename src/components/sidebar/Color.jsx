@@ -1,6 +1,9 @@
 import RadioBox from "../RadioBox";
+import { useProduct } from "../../context/product";
 
-const Color = ({ products, handleColors }) => {
+const Color = ({ handleColor }) => {
+  const { products } = useProduct();
+
   const colors = [
     ...new Set(
       products.map(
@@ -9,17 +12,18 @@ const Color = ({ products, handleColors }) => {
       )
     ),
   ];
+
   return (
     <div>
       <h2 className="text-base xl:text-lg font-medium mb-3">Colors</h2>
-      <RadioBox name="color" handleValue={handleColors} text="All" />
+      <RadioBox name="color" handleValue={handleColor} text="All" />
       {colors &&
         colors.map((color, index) => (
           <RadioBox
-            name="color"
-            handleValue={handleColors}
-            text={color}
             key={index}
+            name="color"
+            text={color}
+            handleValue={handleColor}
             color={color.toLowerCase()}
           />
         ))}

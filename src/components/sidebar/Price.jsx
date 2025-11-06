@@ -1,11 +1,12 @@
-const Price = ({ products, handlePrice }) => {
+import { useProduct } from "../../context/product";
+
+const Price = ({ handlePrice }) => {
+  const { products } = useProduct();
+
   const prices = [
-    ...new Set(
-      products.map(
-        (item) => item.newPrice[0].toUpperCase() + item.newPrice.slice(1)
-      )
-    ),
-  ].sort((a, b) => parseInt(a.replace("$", "")) - parseInt(b.replace("$", "")));
+    ...new Set(products.map((item) => item.price - (item.discountPrice || 0))),
+  ].sort((a, b) => a - b);
+
   return (
     <div>
       <h2 className="text-base xl:text-lg font-medium mb-3">Price</h2>

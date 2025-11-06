@@ -1,59 +1,64 @@
+import { filterData } from "../utils";
 import { useEffect, useState } from "react";
-import data from "./db/data";
-import { getProducts } from "./db/getProducts";
-import { Nav, Product, Products, Recommend, Sidebar } from ".";
+import { useProduct } from "./context/product";
+import { Category, Color, Nav, Price, ProductList, Recommend } from ".";
 
 const App = () => {
-  const [products, setProducts] = useState([]);
-  const [inputText, setInputText] = useState("");
-  const [filtered, setFiltered] = useState(null);
+  const { products } = useProduct();
+  const [filtered, setFiltered] = useState({
+    name: "",
+    brand: "",
+    color: "",
+    category: "",
+    products: [],
+  });
 
-  /* Get Product from API */
   useEffect(() => {
-    (async () => {
-      const products = await getProducts();
-      setProducts(products);
-    })();
-  }, []);
+    setFiltered((prev) => ({ ...prev, products }));
+  }, [products]);
 
   /* InputText */
-  const handleInputText = (e) => setInputText(e.target.value);
-
-  /* Radio Filter */
-  const handleSidebar = (e) => setFiltered(e.target.value);
-
-  /* Button Filter */
-  const handleRecommmend = (e) => setFiltered(e.target.value);
-
-  const filterData = (data, product, input) => {
-    let filteredProducts = data;
-    if (input)
-      filteredProducts = data.filter(
-        (product) =>
-          product.title
-            .toLocaleLowerCase()
-            .indexOf(inputText.toLocaleLowerCase()) !== -1
-      );
-
-    if (product)
-      filteredProducts = filteredProducts.filter(
-        ({ category, color, newPrice, company, title }) =>
-          [category, color, newPrice, company, title].includes(product)
-      );
-
-    return filteredProducts.map((product, index) => (
-      <Product key={index} {...product} />
-    ));
+  const handleInputText = (e) => {
+    setFiltered((prev) => ({ ...prev, name: e.target.value }));
   };
 
-  let product = filterData(data, filtered, inputText);
+  /* Button Filter */
+  const handleRecommmend = (e) => {
+    console.log(e.target.value);
+    setFiltered((prev) => ({ ...prev, brand: e.target.value }));
+  };
+
+  /* Color Filter */
+  const handleColor = (e) => {
+    setFiltered((prev) => ({ ...prev, color: e.target.value }));
+  };
+
+  /* Category Filter */
+  const handleCategory = (e) => {
+    setFiltered((prev) => ({ ...prev, category: e.target.value }));
+  };
+
+  /* Price Filter */
+  const handlePrice = (e) => {
+    setFiltered((prev) => ({ ...prev, price: e.target.value }));
+  };
+
+  let filteredProducts = filterData(filtered);
 
   return (
     <div className="font-sans">
-      {/* <Sidebar products={products} handleSidebar={handleSidebar} /> */}
-      <Nav text={inputText} handleText={handleInputText} />
-      <Recommend products={products} handleRecommmend={handleRecommmend} />
-      <Products product={product} />
+      {/* Sidebar */}
+      <section className="pl-3 justify-center xl:pl-8 fixed items-start top-0 lg:w-40 xl:w-56 shadow-md h-full hidden lg:flex gap-4 flex-col select-none">
+        <Category handleCategory={handleCategory} />
+        <Price handlePrice={handlePrice} />
+        <Color handleColor={handleColor} />
+      </section>
+      {/* Header */}
+      <Nav text={filtered.name} handleText={handleInputText} />
+      {/* Brands */}
+      <Recommend handleRecommmend={handleRecommmend} />
+      {/* Product List */}
+      <ProductList products={filteredProducts} />
     </div>
   );
 };
