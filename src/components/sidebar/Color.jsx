@@ -7,8 +7,7 @@ const Color = ({ handleColor }) => {
   const colors = [
     ...new Set(
       products.map(
-        (item) =>
-          item.color[0].toUpperCase() + item.color.slice(1).toLowerCase()
+        item => item.color[0].toUpperCase() + item.color.slice(1).toLowerCase()
       )
     ),
   ];
@@ -24,7 +23,6 @@ const Color = ({ handleColor }) => {
             name="color"
             text={color}
             handleValue={handleColor}
-            color={color.toLowerCase()}
           />
         ))}
     </div>

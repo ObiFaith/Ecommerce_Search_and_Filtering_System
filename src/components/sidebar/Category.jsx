@@ -7,7 +7,7 @@ const Category = ({ handleCategory }) => {
   const categories = [
     ...new Set(
       products.map(
-        (item) =>
+        item =>
           item.category[0].toUpperCase() + item.category.slice(1).toLowerCase()
       )
     ),

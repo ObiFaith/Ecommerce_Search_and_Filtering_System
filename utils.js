@@ -8,21 +8,30 @@ export const getProducts = async () => {
   return products;
 };
 
-export const filterData = (query) => {
+export const filterData = query => {
   let { products } = query;
   const { name, brand, color, category } = query;
 
   if (name)
     products = products.filter(
-      (product) => product.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
+      product => product.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
     );
 
-  if (brand) products = products.filter((product) => product.company === brand);
+  if (brand) products = products.filter(product => product.company === brand);
 
-  if (color) products = products.filter((product) => product.color === color);
+  if (color) products = products.filter(product => product.color === color);
 
   if (category)
-    products = products.filter((product) => product.category === category);
+    products = products.filter(product => product.category === category);
 
   return products;
+};
+
+export const getPriceRanges = (min, max) => {
+  const rangeMin = Math.floor(min / 100) * 100;
+  const rangeMax = Math.ceil(max / 100) * 100;
+
+  const step = (rangeMax - rangeMin) / 4;
+
+  return Array.from({ length: 5 }, (_, i) => Math.round(rangeMin + step * i));
 };
