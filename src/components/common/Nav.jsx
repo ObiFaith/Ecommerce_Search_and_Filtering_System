@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import Icon from "../components/Icon";
-import { cart, heart, user } from "..";
+import { cart, heart, Icon, user } from "../..";
 
 const Nav = ({ text, handleText }) => {
   return (

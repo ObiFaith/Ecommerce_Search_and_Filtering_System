@@ -1,8 +1,8 @@
+import { Icon } from "../..";
 import PropTypes from "prop-types";
-import Icon from "../components/Icon";
-import { filledStar, shoppingBag } from "..";
+import { filledStar, shoppingBag } from "../..";
 
-const Product = ({ imageUrl, name, numReviews, price, discountPrice }) => {
+const ProductCard = ({ imageUrl, name, numReviews, price, discountPrice }) => {
   return (
     <div className="p-8 px-4 md:px-6 shadow-sm hover:shadow-md hover:shadow-slate-300 flex flex-col justify-between border rounded-md border-[#ededed] cursor-pointer">
       <img className="mx-auto mb-6 max-h-40" src={imageUrl} alt={name} />
@@ -32,7 +32,7 @@ const Product = ({ imageUrl, name, numReviews, price, discountPrice }) => {
   );
 };
 
-Product.propTypes = {
+ProductCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   numReviews: PropTypes.number.isRequired,
@@ -40,4 +40,4 @@ Product.propTypes = {
   discountPrice: PropTypes.number.isRequired,
 };
 
-export default Product;
+export default ProductCard;

@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
-import Product from "../components/Product";
+import { ProductCard } from "../..";
 
 const ProductList = ({ products }) => {
   return products.length > 0 ? (
     <section className="grid sm:grid-cols-2 lg:grid-cols-3 pt-12 gap-5 max-container">
       {products.map((product, index) => (
-        <Product key={index} {...product} />
+        <ProductCard key={index} {...product} />
       ))}
     </section>
   ) : (

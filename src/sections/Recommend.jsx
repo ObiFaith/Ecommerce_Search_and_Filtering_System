@@ -1,6 +1,6 @@
+import { Button } from "..";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import Button from "../components/Button";
 
 const Recommend = ({ products, handleRecommmend }) => {
   const [activeBtn, setActiveBtn] = useState("All Products");

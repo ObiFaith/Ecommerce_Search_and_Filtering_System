@@ -1,5 +1,5 @@
+import { RadioBox } from "../..";
 import PropTypes from "prop-types";
-import RadioBox from "../RadioBox";
 
 const Category = ({ products, handleCategory }) => {
   const categories = [

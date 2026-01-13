@@ -1,19 +1,18 @@
-import filledStar from "./assets/Icons/star-solid.svg";
-import shoppingBag from "./assets/Icons/bag-shopping-solid.svg";
-import heart from "./assets/Icons/heart-regular.svg";
-import cart from "./assets/Icons/cart-plus-solid.svg";
-import user from "./assets/Icons/user-regular.svg";
-
-import Button from "./components/Button";
-import Nav from "./components/Nav";
-import Product from "./components/Product";
-
+import Nav from "./components/common/Nav";
+import Icon from "./components/common/Icon";
+import Recommend from "./sections/Recommend";
 import Color from "./components/sidebar/Color";
 import Price from "./components/sidebar/Price";
+import Button from "./components/common/Button";
+import user from "./assets/Icons/user-regular.svg";
+import RadioBox from "./components/common/RadioBox";
 import Category from "./components/sidebar/Category";
-
-import ProductList from "./sections/ProductList";
-import Recommend from "./sections/Recommend";
+import heart from "./assets/Icons/heart-regular.svg";
+import cart from "./assets/Icons/cart-plus-solid.svg";
+import filledStar from "./assets/Icons/star-solid.svg";
+import ProductCard from "./components/product/ProductCard";
+import ProductList from "./components/product/ProductList";
+import shoppingBag from "./assets/Icons/bag-shopping-solid.svg";
 
 export {
   /* Icons */
@@ -24,11 +23,13 @@ export {
   shoppingBag,
   /* Components */
   Nav,
+  Icon,
   Color,
   Price,
   Button,
-  Product,
   Category,
+  RadioBox,
   Recommend,
+  ProductCard,
   ProductList,
 };
