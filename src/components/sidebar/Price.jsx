@@ -16,7 +16,7 @@ const Price = ({ products, handlePrice }) => {
         priceRange.map((price, index) => (
           <div
             key={index}
-            className="relative border-2 border-red-500 block pl-9 mb-3 *:cursor-pointer"
+            className="relative block pl-9 mb-3 *:cursor-pointer"
           >
             <input
               onChange={handlePrice}
