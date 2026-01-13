@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Button = ({ name, handleClick, className = "" }) => (
   <button
     onClick={handleClick}
@@ -7,5 +9,11 @@ const Button = ({ name, handleClick, className = "" }) => (
     {name}
   </button>
 );
+
+Button.propTypes = {
+  name: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
+}
 
 export default Button;

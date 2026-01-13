@@ -1,10 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -16,9 +12,6 @@
   .custom-radio {
     @apply absolute top-0 left-0 w-5 h-5 bg-[#eee] rounded-full after:rounded-full peer-checked:bg-slate-500 peer-checked:after:block peer-hover:bg-[#ccc] after:contents after:top-1.5 after:left-1.5 after:w-2 peer-checked:shadow-sm peer-checked:shadow-gray-600 after:h-2 after:absolute after:bg-white;
   }
-}
-
-@layer utilities {
   .max-container {
     @apply lg:max-w-[calc(100%_-_9rem)] xl:max-w-[calc(100%_-_15rem)] lg:pl-14 lg:pr-8 px-6 w-full lg:ml-auto;
   }

@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export const getProducts = async () => {
@@ -8,8 +9,7 @@ export const getProducts = async () => {
   return products;
 };
 
-export const filterData = query => {
-  let { products } = query;
+export const filterProducts = (products, query) => {
   const { name, brand, color, category } = query;
 
   if (name)
@@ -23,6 +23,8 @@ export const filterData = query => {
 
   if (category)
     products = products.filter(product => product.category === category);
+
+  // TODO: Filter by price
 
   return products;
 };

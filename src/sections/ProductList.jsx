@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Product from "../components/Product";
 
 const ProductList = ({ products }) => {
@@ -12,6 +13,10 @@ const ProductList = ({ products }) => {
       No such product!
     </div>
   );
+};
+
+ProductList.propTypes = {
+  products: PropTypes.array.isRequired,
 };
 
 export default ProductList;

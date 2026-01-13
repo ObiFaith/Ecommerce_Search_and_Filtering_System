@@ -1,12 +1,11 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import Button from "../components/Button";
-import { useProduct } from "../context/product";
 
-const Recommend = ({ handleRecommmend }) => {
-  const { products } = useProduct();
+const Recommend = ({ products, handleRecommmend }) => {
   const [activeBtn, setActiveBtn] = useState("All Products");
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     const company = e.target.innerText;
     setActiveBtn(company);
     return handleRecommmend(e);
@@ -15,7 +14,7 @@ const Recommend = ({ handleRecommmend }) => {
   const companys = [
     ...new Set(
       products.map(
-        (item) =>
+        item =>
           item.company[0].toUpperCase() + item.company.slice(1).toLowerCase()
       )
     ),
@@ -33,7 +32,7 @@ const Recommend = ({ handleRecommmend }) => {
           }
         />
         {companys &&
-          companys.map((company) => (
+          companys.map(company => (
             <Button
               key={company}
               name={company}
@@ -44,6 +43,11 @@ const Recommend = ({ handleRecommmend }) => {
       </div>
     </div>
   );
+};
+
+Recommend.propTypes = {
+  products: PropTypes.array.isRequired,
+  handleRecommmend: PropTypes.func.isRequired,
 };
 
 export default Recommend;

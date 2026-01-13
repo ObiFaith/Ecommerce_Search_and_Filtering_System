@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const RadioBox = ({ text, name, handleValue }) => {
   return (
     <div className="relative block pl-9 mb-3 *:cursor-pointer">
@@ -12,6 +14,12 @@ const RadioBox = ({ text, name, handleValue }) => {
       {text}
     </div>
   );
+};
+
+RadioBox.propTypes = {
+  text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  handleValue: PropTypes.func.isRequired,
 };
 
 export default RadioBox;

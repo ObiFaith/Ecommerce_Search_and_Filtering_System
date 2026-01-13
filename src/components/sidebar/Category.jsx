@@ -1,9 +1,7 @@
+import PropTypes from "prop-types";
 import RadioBox from "../RadioBox";
-import { useProduct } from "../../context/product";
 
-const Category = ({ handleCategory }) => {
-  const { products } = useProduct();
-
+const Category = ({ products, handleCategory }) => {
   const categories = [
     ...new Set(
       products.map(
@@ -28,6 +26,11 @@ const Category = ({ handleCategory }) => {
         ))}
     </div>
   );
+};
+
+Category.propTypes = {
+  products: PropTypes.array.isRequired,
+  handleCategory: PropTypes.func.isRequired,
 };
 
 export default Category;

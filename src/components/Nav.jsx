@@ -1,5 +1,6 @@
-import { heart, cart, user } from "..";
+import PropTypes from "prop-types";
 import Icon from "../components/Icon";
+import { cart, heart, user } from "..";
 
 const Nav = ({ text, handleText }) => {
   return (
@@ -22,6 +23,11 @@ const Nav = ({ text, handleText }) => {
       </nav>
     </header>
   );
+};
+
+Nav.propTypes = {
+  text: PropTypes.string.isRequired,
+  handleText: PropTypes.func.isRequired,
 };
 
 export default Nav;

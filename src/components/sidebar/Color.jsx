@@ -1,9 +1,7 @@
+import PropTypes from "prop-types";
 import RadioBox from "../RadioBox";
-import { useProduct } from "../../context/product";
 
-const Color = ({ handleColor }) => {
-  const { products } = useProduct();
-
+const Color = ({ products, handleColor }) => {
   const colors = [
     ...new Set(
       products.map(
@@ -27,6 +25,11 @@ const Color = ({ handleColor }) => {
         ))}
     </div>
   );
+};
+
+Color.propTypes = {
+  products: PropTypes.array.isRequired,
+  handleColor: PropTypes.func.isRequired,
 };
 
 export default Color;

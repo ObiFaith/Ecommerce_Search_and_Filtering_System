@@ -1,10 +1,8 @@
+import PropTypes from "prop-types";
 import { getPriceRanges } from "../../../utils";
-import { useProduct } from "../../context/product";
 
-const Price = ({ handlePrice }) => {
+const Price = ({ products, handlePrice }) => {
   let priceRanges = [];
-  const { products } = useProduct();
-
   const prices = [
     ...new Set(products.map(item => item.price - (item.discountPrice || 0))),
   ].sort((a, b) => a - b);
@@ -40,6 +38,11 @@ const Price = ({ handlePrice }) => {
         ))}
     </div>
   );
+};
+
+Price.propTypes = {
+  products: PropTypes.array.isRequired,
+  handlePrice: PropTypes.func.isRequired,
 };
 
 export default Price;
