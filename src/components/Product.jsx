@@ -10,9 +10,9 @@ const Product = ({ imageUrl, name, numReviews, price, discountPrice }) => {
         <h3 className="font-medium lg:text-lg">{name}</h3>
         <div className="flex justify-between">
           <div className="flex gap-1">
-            <Icon iconURL={filledStar} />
-            <Icon iconURL={filledStar} />
-            <Icon iconURL={filledStar} />
+            <Icon iconUrl={filledStar} />
+            <Icon iconUrl={filledStar} />
+            <Icon iconUrl={filledStar} />
           </div>
           <span className="text-sm">({numReviews} reviews)</span>
         </div>
@@ -24,7 +24,7 @@ const Product = ({ imageUrl, name, numReviews, price, discountPrice }) => {
             {discountPrice && <span>₦{price - discountPrice}</span>}
           </div>
           <div>
-            <Icon iconURL={shoppingBag} />
+            <Icon iconUrl={shoppingBag} />
           </div>
         </div>
       </div>

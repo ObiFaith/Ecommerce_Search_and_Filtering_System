@@ -16,9 +16,9 @@ const Nav = ({ text, handleText }) => {
           />
         </div>
         <div className="flex gap-4">
-          <Icon iconURL={heart} />
-          <Icon iconURL={cart} />
-          <Icon iconURL={user} />
+          <Icon iconUrl={heart} />
+          <Icon iconUrl={cart} />
+          <Icon iconUrl={user} />
         </div>
       </nav>
     </header>
