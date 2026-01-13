@@ -13,6 +13,8 @@ import filledStar from "./assets/Icons/star-solid.svg";
 import ProductCard from "./components/product/ProductCard";
 import ProductList from "./components/product/ProductList";
 import shoppingBag from "./assets/Icons/bag-shopping-solid.svg";
+import ProductContainer from "./components/product/ProductContainer";
+import ProductPresenter from "./components/product/ProductPresenter";
 
 export {
   /* Icons */
@@ -32,4 +34,6 @@ export {
   Recommend,
   ProductCard,
   ProductList,
+  ProductContainer,
+  ProductPresenter
 };
