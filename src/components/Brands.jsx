@@ -20,7 +20,7 @@ const Brands = ({ products, onSelect }) => {
   ];
 
   return (
-    <div className="max-container">
+    <div className="max-container transition-all">
       <h2 className="font-sans text-2xl font-bold mb-3">Recommend</h2>
       <div className="flex gap-3">
         <Button

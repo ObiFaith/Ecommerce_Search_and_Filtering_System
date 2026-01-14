@@ -1,39 +1,40 @@
-import { Brands, Category, Color, Nav, Price, ProductList } from "../..";
+import PropTypes from "prop-types";
+import { lazy, Suspense } from "react";
+import SkeletonCard from "./SkeletonCard";
+import { Brands, Nav, ProductList } from "../..";
+
+const Sidebar = lazy(() => import("../sidebar"));
 
 const ProductPresenter = ({
-  value,
+  filters,
   products,
+  isLoading,
   onFilterChange,
   filteredProducts,
 }) => {
   return (
     <>
       {/* Sidebar */}
-      <section className="pl-3 justify-center xl:pl-8 fixed items-start top-0 lg:w-40 xl:w-56 shadow-md h-full hidden lg:flex gap-4 flex-col select-none">
-        <Category
-          products={products}
-          onSelect={(value) => onFilterChange("category", value)}
-        />
-        <Price
-          products={products}
-          onSelect={(value) => onFilterChange("price", value)}
-        />
-        <Color
-          products={products}
-          onSelect={(value) => onFilterChange("color", value)}
-        />
-      </section>
+      <Sidebar products={products} onFilterChange={onFilterChange} />
       {/* Header */}
-      <Nav value={value} onChange={(value) => onFilterChange("name", value)} />
+      <Nav value={filters.name} onChange={(value) => onFilterChange("name", value)} />
       {/* Brands */}
       <Brands
         products={products}
         onSelect={(value) => onFilterChange("brand", value)}
       />
       {/* Product List */}
-      <ProductList products={filteredProducts} />
+      <ProductList filters={filters} isLoading={isLoading} products={filteredProducts} />
     </>
   );
+};
+
+ProductPresenter.propTypes = {
+  filters: PropTypes.object.isRequired,
+  products: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  filteredProducts: PropTypes.array.isRequired,
 };
 
 export default ProductPresenter;

@@ -4,6 +4,7 @@ import { filterProducts, getProducts } from "../../../utils";
 
 const ProductContainer = () => {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [filters, setFilters] = useState({
     name: "",
     brand: "",
@@ -17,6 +18,7 @@ const ProductContainer = () => {
     (async () => {
       const products = await getProducts();
       setProducts(products);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -31,8 +33,9 @@ const ProductContainer = () => {
 
   return (
     <ProductPresenter
+      filters={filters}
       products={products}
-      value={filters.name}
+      isLoading={isLoading}
       onFilterChange={updateFilter}
       filteredProducts={filteredProducts}
     />

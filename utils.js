@@ -9,20 +9,25 @@ export const getProducts = async () => {
   return products;
 };
 
+export const getFilterValues = (filters) =>
+  Object.values(filters)
+    .filter((value) => value)
+    .map((value) => value.charAt(0).toUpperCase() + value.slice(1));
+
 export const filterProducts = (products, query) => {
   const { name, brand, color, category } = query;
 
   if (name)
     products = products.filter(
-      product => product.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
+      (product) => product.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
     );
 
-  if (brand) products = products.filter(product => product.company === brand);
+  if (brand) products = products.filter((product) => product.company === brand);
 
-  if (color) products = products.filter(product => product.color === color);
+  if (color) products = products.filter((product) => product.color === color);
 
   if (category)
-    products = products.filter(product => product.category === category);
+    products = products.filter((product) => product.category === category);
 
   // TODO: Filter by price
 

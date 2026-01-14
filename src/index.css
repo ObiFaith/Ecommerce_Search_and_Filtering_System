@@ -12,6 +12,12 @@
   .custom-radio {
     @apply absolute top-0 left-0 w-5 h-5 bg-[#eee] rounded-full after:rounded-full peer-checked:bg-slate-500 peer-checked:after:block peer-hover:bg-[#ccc] after:contents after:top-1.5 after:left-1.5 after:w-2 peer-checked:shadow-sm peer-checked:shadow-gray-600 after:h-2 after:absolute after:bg-white;
   }
+  .product__list {
+    @apply grid sm:grid-cols-2 lg:grid-cols-3 gap-5;
+  }
+  .product__card {
+    @apply p-8 px-4 md:px-6 shadow-sm hover:shadow-md hover:shadow-slate-300 flex flex-col justify-between border rounded-md border-[#ededed] cursor-pointer;
+  }
   .max-container {
     @apply lg:max-w-[calc(100%_-_9rem)] xl:max-w-[calc(100%_-_15rem)] lg:pl-14 lg:pr-8 px-6 w-full lg:ml-auto;
   }
