@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import { cart, heart, Icon, user } from "../..";
 
-const Nav = ({ text, handleText }) => {
+const Nav = ({ value, onChange }) => {
   return (
     <header className="max-container mb-8">
       <nav className="flex items-center py-5 border-b-2 border-[#f3f3f3] justify-between">
         <div>
           <input
-            onChange={handleText}
-            value={text}
+            onChange={(e) => onChange(e.target.value)}
+            value={value}
             type="text"
             className="outline-none focus:shadow-md placeholder:font-normal text-gray-600 font-medium px-5 py-3 rounded-md border-0 bg-[#f7f6f6] relative sm:min-w-96"
             placeholder="Enter product"
@@ -25,8 +25,8 @@ const Nav = ({ text, handleText }) => {
 };
 
 Nav.propTypes = {
-  text: PropTypes.string.isRequired,
-  handleText: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Nav;

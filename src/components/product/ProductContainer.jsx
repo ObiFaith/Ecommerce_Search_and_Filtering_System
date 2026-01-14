@@ -1,16 +1,18 @@
 import { ProductPresenter } from "../..";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { filterProducts, getProducts } from "../../../utils";
 
 const ProductContainer = () => {
   const [products, setProducts] = useState([]);
-  const [filtered, setFiltered] = useState({
+  const [filters, setFilters] = useState({
     name: "",
     brand: "",
     color: "",
+    price: "",
     category: "",
   });
 
+  // load products
   useEffect(() => {
     (async () => {
       const products = await getProducts();
@@ -18,48 +20,21 @@ const ProductContainer = () => {
     })();
   }, []);
 
-  useEffect(() => {
-    setFiltered(prev => ({ ...prev, products }));
-  }, [products]);
-
-  /* Input */
-  const handleInput = e => {
-    setFiltered(prev => ({ ...prev, name: e.target.value }));
+  const updateFilter = (key, value) => {
+    setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
-  /* Button Filter */
-  const handleRecommmend = e => {
-    console.log(e.target.value);
-    setFiltered(prev => ({ ...prev, brand: e.target.value }));
-  };
-
-  /* Color Filter */
-  const handleColor = e => {
-    setFiltered(prev => ({ ...prev, color: e.target.value }));
-  };
-
-  /* Category Filter */
-  const handleCategory = e => {
-    setFiltered(prev => ({ ...prev, category: e.target.value }));
-  };
-
-  /* Price Filter */
-  const handlePrice = e => {
-    setFiltered(prev => ({ ...prev, price: e.target.value }));
-  };
-
-  let filteredProducts = filterProducts(products, filtered);
+  const filteredProducts = useMemo(
+    () => filterProducts(products, filters),
+    [products, filters]
+  );
 
   return (
     <ProductPresenter
-      input={filtered.name}
       products={products}
-      handleInput={handleInput}
-      handleColor={handleColor}
-      handlePrice={handlePrice}
-      handleCategory={handleCategory}
+      value={filters.name}
+      onFilterChange={updateFilter}
       filteredProducts={filteredProducts}
-      handleRecommmend={handleRecommmend}
     />
   );
 };

@@ -2,19 +2,18 @@ import { Button } from "..";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-const Recommend = ({ products, handleRecommmend }) => {
+const Brands = ({ products, onSelect }) => {
   const [activeBtn, setActiveBtn] = useState("All Products");
 
-  const handleClick = e => {
-    const company = e.target.innerText;
-    setActiveBtn(company);
-    return handleRecommmend(e);
+  const handleClick = (e) => {
+    setActiveBtn(e.target.innerText);
+    return onSelect(e.target.value);
   };
 
   const companys = [
     ...new Set(
       products.map(
-        item =>
+        (item) =>
           item.company[0].toUpperCase() + item.company.slice(1).toLowerCase()
       )
     ),
@@ -26,17 +25,17 @@ const Recommend = ({ products, handleRecommmend }) => {
       <div className="flex gap-3">
         <Button
           name="All Products"
-          handleClick={handleClick}
+          onClick={handleClick}
           className={
             activeBtn === "All Products" ? "bg-slate-500 text-white" : ""
           }
         />
         {companys &&
-          companys.map(company => (
+          companys.map((company) => (
             <Button
               key={company}
               name={company}
-              handleClick={handleClick}
+              onClick={handleClick}
               className={activeBtn === company ? "bg-slate-500 text-white" : ""}
             />
           ))}
@@ -45,9 +44,9 @@ const Recommend = ({ products, handleRecommmend }) => {
   );
 };
 
-Recommend.propTypes = {
+Brands.propTypes = {
   products: PropTypes.array.isRequired,
-  handleRecommmend: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
-export default Recommend;
+export default Brands;

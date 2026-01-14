@@ -1,6 +1,6 @@
+import Brands from "./components/Brands";
 import Nav from "./components/common/Nav";
 import Icon from "./components/common/Icon";
-import Recommend from "./sections/Recommend";
 import Color from "./components/sidebar/Color";
 import Price from "./components/sidebar/Price";
 import Button from "./components/common/Button";
@@ -15,6 +15,7 @@ import ProductList from "./components/product/ProductList";
 import shoppingBag from "./assets/Icons/bag-shopping-solid.svg";
 import ProductContainer from "./components/product/ProductContainer";
 import ProductPresenter from "./components/product/ProductPresenter";
+
 
 export {
   /* Icons */
@@ -31,7 +32,7 @@ export {
   Button,
   Category,
   RadioBox,
-  Recommend,
+  Brands,
   ProductCard,
   ProductList,
   ProductContainer,

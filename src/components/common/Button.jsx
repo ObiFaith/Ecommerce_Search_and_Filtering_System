@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-const Button = ({ name, handleClick, className = "" }) => (
+const Button = ({ name, onClick, className = "" }) => (
   <button
-    onClick={handleClick}
+    onClick={onClick}
     className={`btn ${className}`}
     value={name !== "All Products" ? name.toLowerCase() : ""}
   >
@@ -12,7 +12,7 @@ const Button = ({ name, handleClick, className = "" }) => (
 
 Button.propTypes = {
   name: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
 }
 

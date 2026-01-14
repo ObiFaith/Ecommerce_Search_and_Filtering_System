@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import { getPriceRanges } from "../../../utils";
 
-const Price = ({ products, handlePrice }) => {
+const Price = ({ products, onSelect }) => {
   let priceRange = [];
   const prices = [
-    ...new Set(products.map(item => item.price - (item.discountPrice || 0))),
+    ...new Set(products.map((item) => item.price - (item.discountPrice || 0))),
   ].sort((a, b) => a - b);
 
   priceRange = getPriceRanges(prices[0], prices[prices.length - 1]);
@@ -19,7 +19,7 @@ const Price = ({ products, handlePrice }) => {
             className="relative block pl-9 mb-3 *:cursor-pointer"
           >
             <input
-              onChange={handlePrice}
+              onChange={(e) => onSelect(e.target.value)}
               type="radio"
               name="price"
               value={price}
@@ -39,7 +39,7 @@ const Price = ({ products, handlePrice }) => {
 
 Price.propTypes = {
   products: PropTypes.array.isRequired,
-  handlePrice: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default Price;
