@@ -9,10 +9,12 @@ export const getProducts = async () => {
   return products;
 };
 
+export const capitalise = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
 export const getFilterValues = (filters) =>
   Object.values(filters)
     .filter((value) => value)
-    .map((value) => value.charAt(0).toUpperCase() + value.slice(1));
+    .map(capitalise);
 
 export const filterProducts = (products, query) => {
   const { name, brand, color, category } = query;

@@ -13,8 +13,8 @@ const ProductContainer = () => {
     category: "",
   });
 
-  // load products
   useEffect(() => {
+  // load products
     (async () => {
       const products = await getProducts();
       setProducts(products);

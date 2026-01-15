@@ -1,15 +1,10 @@
 import { RadioBox } from "../..";
 import PropTypes from "prop-types";
+import { capitalise } from "../../../utils";
+
 
 const Category = ({ products, onSelect }) => {
-  const categories = [
-    ...new Set(
-      products.map(
-        (item) =>
-          item.category[0].toUpperCase() + item.category.slice(1).toLowerCase()
-      )
-    ),
-  ];
+  const categories = [...new Set(products.map((item) => capitalise(item.category)))];
 
   return (
     <div>

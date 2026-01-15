@@ -1,7 +1,7 @@
+import { lazy } from "react";
 import PropTypes from "prop-types";
-import { lazy, Suspense } from "react";
-import SkeletonCard from "./SkeletonCard";
 import { Brands, Nav, ProductList } from "../..";
+
 
 const Sidebar = lazy(() => import("../sidebar"));
 
@@ -17,14 +17,21 @@ const ProductPresenter = ({
       {/* Sidebar */}
       <Sidebar products={products} onFilterChange={onFilterChange} />
       {/* Header */}
-      <Nav value={filters.name} onChange={(value) => onFilterChange("name", value)} />
+      <Nav
+        value={filters.name}
+        onChange={(value) => onFilterChange("name", value)}
+      />
       {/* Brands */}
       <Brands
         products={products}
         onSelect={(value) => onFilterChange("brand", value)}
       />
       {/* Product List */}
-      <ProductList filters={filters} isLoading={isLoading} products={filteredProducts} />
+      <ProductList
+        filters={filters}
+        isLoading={isLoading}
+        products={filteredProducts}
+      />
     </>
   );
 };
